@@ -14,7 +14,7 @@ def predict():
 
     command = 'curl {} -H "Cookie: PHPSESSID={}" > /tmp/captcha.png'.format(url, sessid)
     os.system("rm /tmp/captcha.png")
-    print command
+    print(command)
     os.system(command)
     return captcha_api.predict('/tmp/captcha.png')
 

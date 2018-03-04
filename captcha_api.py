@@ -26,7 +26,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 def one_hot_to_texts(recog_result):
     texts = []
-    for i in xrange(recog_result.shape[0]):
+    for i in range(recog_result.shape[0]):
         index = recog_result[i]
         texts.append(''.join([CHAR_SETS[i] for i in index]))
     return texts
