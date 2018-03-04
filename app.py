@@ -7,8 +7,8 @@ app = Flask(__name__)
 
 @app.route("/predict")
 def predict():
-    url = shellescape.quote(request.args.get("url").encode())
-    sessid = request.args.get("sessid").encode()
+    url = shellescape.quote(request.args.get("url"))
+    sessid = request.args.get("sessid")
     if not set(sessid).issubset(set('0123456789abcdefghijklmnopqrstuvwxyz')):
         abort(404)
 
