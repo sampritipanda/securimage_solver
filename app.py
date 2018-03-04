@@ -1,4 +1,4 @@
-from flask import Flask, request, abort
+from flask import Flask, request, abort, send_file
 import shellescape
 import captcha_api
 import os
@@ -17,6 +17,10 @@ def predict():
     print command
     os.system(command)
     return captcha_api.predict('/tmp/captcha.png')
+
+@app.route("/current_image")
+def current_image():
+    return send_file('/tmp/captcha.png')
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)
