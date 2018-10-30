@@ -28,12 +28,12 @@ Install by running `pip install https://github.com/sampritipanda/securimage_solv
 
 #### Examples of CAPTCHAs that have been successfully solved:
 
-[![Image1](securimage_solver/images/7NwHCn_141c1458-b5e4-439f-be01-8a8b30c6cbd8.png)]()
-[![Image2](securimage_solver/images/kLSF7y_dc083c8e-d116-4448-a938-6e3516205d01.png)]()
+[![Image1](images/7NwHCn_141c1458-b5e4-439f-be01-8a8b30c6cbd8.png)]()
+[![Image2](images/kLSF7y_dc083c8e-d116-4448-a938-6e3516205d01.png)]()
 
 
-[![Image3](securimage_solver/images/z6brnd_4166a5cd-d98a-4099-9b86-4d13dbd100c5.png)]()
-[![Image4](securimage_solver/images/A8MZBV_472d2d51-84e0-442a-a278-83df5fa8e238.png)]()
+[![Image3](images/z6brnd_4166a5cd-d98a-4099-9b86-4d13dbd100c5.png)]()
+[![Image4](images/A8MZBV_472d2d51-84e0-442a-a278-83df5fa8e238.png)]()
 
 # License
 

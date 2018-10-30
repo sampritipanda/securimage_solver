@@ -18,7 +18,7 @@ setup(
     description='Solving Securimage Captchas using ConvNets',
     version=__version__,
     long_description=read('README.MD'),
-    license='The MIT License',
+    license='MIT',
     platforms=['OS Independent'],
     keywords='captcha-solving,neural-networks,cnn',
     author='Sampriti Panda',

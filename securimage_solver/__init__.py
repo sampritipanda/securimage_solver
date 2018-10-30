@@ -1,0 +1,1 @@
+from securimage_solver.captcha_api import CaptchaApi
