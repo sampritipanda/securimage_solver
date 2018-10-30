@@ -10,10 +10,10 @@ import numpy as np
 
 import tensorflow as tf
 from tensorflow.python.platform import gfile
-import captcha_model as captcha
+import .captcha_model as captcha
 from trim import trim
 
-import config
+import .config
 
 class CaptchaApi():
     def __init__(self):

@@ -5,7 +5,7 @@ from __future__ import print_function
 import os.path
 import tensorflow as tf
 
-import config
+import .config
 
 RECORD_DIR = config.RECORD_DIR
 TRAIN_FILE = config.TRAIN_FILE
