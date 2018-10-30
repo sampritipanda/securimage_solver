@@ -1,0 +1,4 @@
+include securimage_solver/captcha_train/*
+include requirements.txt
+include LICENSE
+include README.md
