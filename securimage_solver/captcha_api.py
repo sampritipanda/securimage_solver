@@ -3,17 +3,17 @@ from __future__ import division
 from __future__ import print_function
 
 import sys
-import os.path
+from os import path, environ
 from datetime import datetime
 from PIL import Image
 import numpy as np
 
 import tensorflow as tf
 from tensorflow.python.platform import gfile
-import captcha_model as captcha
-from trim import trim
+from securimage_solver.captcha_model import *
+from securimage_solver.trim import trim
 
-import config
+import securimage_solver.config as config
 
 class CaptchaApi():
     def __init__(self):
@@ -23,8 +23,9 @@ class CaptchaApi():
         self.CHAR_SETS = config.CHAR_SETS
         self.CLASSES_NUM = config.CLASSES_NUM
         self.CHARS_NUM = config.CHARS_NUM
+        self.checkpoint_path = path.join(path.dirname(__file__), 'captcha_train')
 
-        os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+        environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
     def one_hot_to_texts(self, recog_result):
         texts = []
@@ -53,11 +54,11 @@ class CaptchaApi():
         with tf.Graph().as_default(), tf.device('/cpu:0'):
             input_images = self.input_data(image_file)
             images = tf.constant(input_images)
-            logits = captcha.inference(images, keep_prob=1)
-            result = captcha.output(logits)
+            logits = inference(images, keep_prob=1)
+            result = output(logits)
             saver = tf.train.Saver()
             sess = tf.Session()
-            saver.restore(sess, tf.train.latest_checkpoint('./captcha_train'))
+            saver.restore(sess, tf.train.latest_checkpoint(self.checkpoint_path))
             recog_result = sess.run(result)
             sess.close()
             text = self.one_hot_to_texts(recog_result)
