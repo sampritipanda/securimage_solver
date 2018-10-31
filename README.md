@@ -6,19 +6,15 @@ Bits and pieces taken from [Patrick Li's project.](https://github.com/PatrickLib
 
 # Usage
 
-Install by running `pip install https://github.com/sampritipanda/securimage_solver/archive/pip_package.zip`
+Clone/Download the repository & install by running `python setup.py install`
 
 * Get solution for an image.
   ```python
-  from securimage_solver import captcha_api
-  captcha_api.predict('/path/to/image.png')
+  from securimage_solver import CaptchaApi
+  c = CaptchaApi()
+  c.predict('/path/to/image.png')
   ```
 
-  From CLI
-
-    ```
-    $> python securimage_solver/captcha_api.py /path/to/image_file.png
-    ```
 
 * Generate random images for testing.
 
