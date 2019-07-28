@@ -3,8 +3,8 @@ from __future__ import division
 from __future__ import print_function
 
 import tensorflow as tf
-import captcha_input
-import config
+import securimage_solver.captcha_input
+import securimage_solver.config as config
 
 IMAGE_WIDTH = config.IMAGE_WIDTH
 IMAGE_HEIGHT = config.IMAGE_HEIGHT
