@@ -1,6 +1,6 @@
 Flask
 gunicorn
-https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.6.0-cp35-cp35m-linux_x86_64.whl
-numpy
-pillow
+tensorflow==1.15.2
+numpy<2.0,>=1.16.0
+Pillow==5.3.0
 shellescape
