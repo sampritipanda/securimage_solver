@@ -19,11 +19,9 @@ Clone/Download the repository & install by running `python setup.py install`
 
 * Get solution for an image.
   ```python
-  from securimage_solver import CaptchaApi
-  c = CaptchaApi()
-  c.predict('/path/to/image.png')
+  import captcha_api
+  captcha_api.predict('/path/to/image.png')
   ```
-
 
 * Generate random images for testing.
 
