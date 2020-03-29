@@ -13,9 +13,13 @@ Bits and pieces taken from [Patrick Li's project.](https://github.com/PatrickLib
 - Windows 7 or later (64-bit) (Python 3 only)
 - Raspbian 9.0 or later
 
-## Usage
+## Installation
+Install the package with 
 
-Clone/Download the repository & install by running `python setup.py install`
+`pip install https://github.com/sampritipanda/securimage_solver/archive/pip_package.zip
+`
+
+## Usage
 
 * Get solution for an image.
   ```python
