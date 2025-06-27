@@ -26,7 +26,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 def one_hot_to_texts(recog_result):
     texts = []
-    for i in xrange(recog_result.shape[0]):
+    for i in range(recog_result.shape[0]):
         index = recog_result[i]
         texts.append(''.join([CHAR_SETS[i] for i in index]))
     return texts
@@ -53,8 +53,8 @@ def predict(image_file):
         images = tf.constant(input_images)
         logits = captcha.inference(images, keep_prob=1)
         result = captcha.output(logits)
-        saver = tf.train.Saver()
-        sess = tf.Session()
+        saver = tf.compat.v1.train.Saver()
+        sess = tf.compat.v1.Session()
         saver.restore(sess, tf.train.latest_checkpoint('./captcha_train'))
         recog_result = sess.run(result)
         sess.close()
