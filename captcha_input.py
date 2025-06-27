@@ -17,19 +17,19 @@ CLASSES_NUM = config.CLASSES_NUM
 CHARS_NUM = config.CHARS_NUM
 
 def read_and_decode(filename_queue):
-  reader = tf.TFRecordReader()
+  reader = tf.compat.v1.TFRecordReader()
   _, serialized_example = reader.read(filename_queue)
-  features = tf.parse_single_example(
+  features = tf.io.parse_single_example(
       serialized_example,
       features={
-          'image_raw': tf.FixedLenFeature([], tf.string),
-          'label_raw': tf.FixedLenFeature([], tf.string),
+          'image_raw': tf.io.FixedLenFeature([], tf.string),
+          'label_raw': tf.io.FixedLenFeature([], tf.string),
       })
-  image = tf.decode_raw(features['image_raw'], tf.int16)
+  image = tf.io.decode_raw(features['image_raw'], tf.int16)
   image.set_shape([IMAGE_HEIGHT * IMAGE_WIDTH])
   image = tf.cast(image, tf.float32) * (1. / 255) - 0.5
   reshape_image = tf.reshape(image, [IMAGE_HEIGHT, IMAGE_WIDTH, 1])
-  label = tf.decode_raw(features['label_raw'], tf.uint8)
+  label = tf.io.decode_raw(features['label_raw'], tf.uint8)
   label.set_shape([CHARS_NUM * CLASSES_NUM])
   reshape_label = tf.reshape(label, [CHARS_NUM, CLASSES_NUM])
   return tf.cast(reshape_image, tf.float32), tf.cast(reshape_label, tf.float32)
@@ -39,17 +39,17 @@ def inputs(train, batch_size):
   filename = os.path.join(RECORD_DIR,
                           TRAIN_FILE if train else VALID_FILE)
 
-  with tf.name_scope('input'):
-    filename_queue = tf.train.string_input_producer([filename])
+  with tf.compat.v1.name_scope('input'):
+    filename_queue = tf.compat.v1.train.string_input_producer([filename])
     image, label = read_and_decode(filename_queue)
     if train:
-        images, sparse_labels = tf.train.shuffle_batch([image, label],
+        images, sparse_labels = tf.compat.v1.train.shuffle_batch([image, label],
                                                        batch_size=batch_size,
                                                        num_threads=6,
                                                        capacity=2000 + 3 * batch_size,
                                                        min_after_dequeue=2000)
     else:
-        images, sparse_labels = tf.train.batch([image, label],
+        images, sparse_labels = tf.compat.v1.train.batch([image, label],
                                                batch_size=batch_size,
                                                num_threads=6,
                                                capacity=2000 + 3 * batch_size)
